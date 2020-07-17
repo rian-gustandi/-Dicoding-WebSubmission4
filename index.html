@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>My First PWA</title>
+  <meta name="description" content="My first PWA" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/materialize.min.css">
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#00897B" />
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navigasi -->
+  <nav class="lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+      <a href="#!" class="brand-logo" id="logo-container">Mobile Legend</a>
+      <a href="#" class="sidenav-trigger" data-target="nav-mobile">☰</a>
+
+      <ul class="topnav right hide-on-med-and-down"></ul>
+      <ul class="sidenav" id="nav-mobile"></ul>
+    </div>
+  </nav>
+  <!-- Akhir Navigasi -->
+
+
+  <div class="container" id="body-content"></div>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l12 s12 center">
+          <h5 class="white-text">Mobile Legend</h5>
+          <p class="grey-text text-lighten-4">
+            “Game On, Party On” | “Ayo Bermain dan Berpesta”.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright center">
+      <div class="container">
+        © 2020 Copyright Mobile Legend
+      </div>
+    </div>
+  </footer>
+  <!-- Akhir Footer -->
+
+  <script src="js/materialize.min.js"></script>
+  <script src="js/nav.js"></script>
+
+  <script>
+    // REGISTER SERVICE WORKER
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then(function () {
+            console.log("Pendaftaran ServiceWorker berhasil");
+          })
+          .catch(function () {
+            console.log("Pendaftaran ServiceWorker gagal");
+          });
+      });
+    } else {
+      console.log("ServiceWorker belum didukung browser ini.");
+    }
+  </script>
+</body>
+
+</html>
