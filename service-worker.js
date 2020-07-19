@@ -1,56 +1,52 @@
-// Menyimpan Aset ke Cache
-const CACHE_NAME = "firstpwa-v1";
+const CACHE_NAME = "firstpwa-v4";
 var urlsToCache = [
   "/",
   "/nav.html",
   "/index.html",
+  "/article.html",
   "/pages/home.html",
-  "/pages/about.html",
-  "/pages/contact.html",
-  "/pages/gallery.html",
   "/css/materialize.min.css",
   "/js/materialize.min.js",
+  "/manifest.json",
   "/js/nav.js",
-  "/assets/img/moba1200.png",
-  "/assets/img/moba512.png",
-  "/assets/img/moba725.png",
-  "/manifest.json"
+  "/js/api.js",
+  "/icon.png"
 ];
 
-self.addEventListener("install", function (event) {
+self.addEventListener("install", function(event) {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(function (cache) {
+    caches.open(CACHE_NAME).then(function(cache) {
       return cache.addAll(urlsToCache);
     })
   );
 });
 
-// Menggunakan Aset dari Cache
-self.addEventListener("fetch", function (event) {
-  event.respondWith(
-    caches
-      .match(event.request, { cacheName: CACHE_NAME })
-      .then(function (response) {
-        if (response) {
-          console.log("ServiceWorker: Gunakan aset dari cache: ", response.url);
-          return response;
-        }
+self.addEventListener("fetch", function(event) {
+  var base_url = "https://cors-anywhere.herokuapp.com/http://api.football-data.org/v2/";
 
-        console.log(
-          "ServiceWorker: Memuat aset dari server: ",
-          event.request.url
-        );
-        return fetch(event.request);
+  if (event.request.url.indexOf(base_url) > -1) {
+    event.respondWith(
+      caches.open(CACHE_NAME).then(function(cache) {
+        return fetch(event.request).then(function(response) {
+          cache.put(event.request.url, response.clone());
+          return response;
+        })
       })
-  );
+    );
+  } else {
+    event.respondWith(
+      caches.match(event.request, { ignoreSearch: true }).then(function(response) {
+        return response || fetch (event.request);
+      })
+    )
+  }
 });
 
-// Menghapus Cache Lama
-self.addEventListener("activate", function (event) {
+self.addEventListener("activate", function(event) {
   event.waitUntil(
-    caches.keys().then(function (cacheNames) {
+    caches.keys().then(function(cacheNames) {
       return Promise.all(
-        cacheNames.map(function (cacheName) {
+        cacheNames.map(function(cacheName) {
           if (cacheName != CACHE_NAME) {
             console.log("ServiceWorker: cache " + cacheName + " dihapus");
             return caches.delete(cacheName);
