@@ -1,6 +1,5 @@
 var base_url = "https://cors-anywhere.herokuapp.com/http://api.football-data.org/v2/";
 
-
 // Blok kode yang akan di panggil jika fetch berhasil
 function status(response) {
   if (response.status !== 200) {
@@ -27,20 +26,19 @@ function error(error) {
 // Blok kode untuk melakukan request data json
 function getArticles() {
   if ("caches" in window) {
-    caches.match(base_url + "competitions").then(function(response) {
+    caches.match(base_url + "competitions").then(function (response) {
       if (response) {
-        response.json().then(function(data) {
+        response.json().then(function (data) {
           var articlesHTML = "";
-          data.competitions.forEach(function(article) {
+          data.competitions.forEach(function (article) {
             articlesHTML += `
                   <div class="card">
-                    <a href="./article.html?id=${article.id}">
-                      <div class="card-image waves-effect waves-block waves-light">
-                        <img src="${article.thumbnail}" />
+                    <a href="./football.html?id=${article.id}">
+                      <div class=" waves-effect waves-block waves-light">
+                        <span class="card-title truncate">${article.name}</span>
                       </div>
                     </a>
                     <div class="card-content">
-                      <span class="card-title truncate">${article.name}</span>
                       <p>${article.lastUpdated}</p>
                     </div>
                   </div>
@@ -56,21 +54,20 @@ function getArticles() {
   fetch(base_url + "competitions")
     .then(status)
     .then(json)
-    .then(function(data) {
+    .then(function (data) {
       // Objek/array JavaScript dari response.json() masuk lewat data.
 
       // Menyusun komponen card artikel secara dinamis
       var articlesHTML = "";
-      data.competitions.forEach(function(article) {
+      data.competitions.forEach(function (article) {
         articlesHTML += `
               <div class="card">
-                <a href="./article.html?id=${article.id}">
-                  <div class="card-image waves-effect waves-block waves-light">
-                    <img src="${article.thumbnail}" />
+                <a href="./football.html?id=${article.id}">
+                  <div class=" waves-effect waves-block waves-light">
+                    <span class="card-title truncate">${article.name}</span>
                   </div>
                 </a>
                 <div class="card-content">
-                  <span class="card-title truncate">${article.name}</span>
                   <p>${article.lastUpdated}</p>
                 </div>
               </div>
@@ -83,15 +80,15 @@ function getArticles() {
 }
 
 function getArticleById() {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     // Ambil nilai query parameter (?id=)
     var urlParams = new URLSearchParams(window.location.search);
     var idParam = urlParams.get("id");
 
     if ("caches" in window) {
-      caches.match(base_url + "article/" + idParam).then(function(response) {
+      caches.match(base_url + "football/" + idParam).then(function (response) {
         if (response) {
-          response.json().then(function(data) {
+          response.json().then(function (data) {
             var articleHTML = `
             <div class="card">
               <div class="card-image waves-effect waves-block waves-light">
@@ -113,10 +110,10 @@ function getArticleById() {
       });
     }
 
-    fetch(base_url + "article/" + idParam)
+    fetch(base_url + "football/" + idParam)
       .then(status)
       .then(json)
-      .then(function(data) {
+      .then(function (data) {
         // Objek JavaScript dari response.json() masuk lewat variabel data.
         // console.log(data);
         // Menyusun komponen card artikel secara dinamis
@@ -140,24 +137,24 @@ function getArticleById() {
 }
 
 function getSavedArticles() {
-  getAll().then(function(articles) {
+  getAll().then(function (articles) {
     console.log(articles);
     // Menyusun komponen card artikel secara dinamis
     var articlesHTML = "";
-    articles.forEach(function(article) {
+    articles.forEach(function (article) {
       var description = article.post_content.substring(0, 100);
 
       articlesHTML += `
                   <div class="card">
-                    <a href="./article.html?id=${article.ID}&saved=true">
+                    <a href="./football.html?id=${article.ID}&saved=true">
                       <div class="card-image waves-effect waves-block waves-light">
                         <img src="${article.cover}" />
                       </div>
                     </a>
                     <div class="card-content">
                       <span class="card-title truncate">${
-                        article.post_title
-                      }</span>
+        article.post_title
+        }</span>
                       <p>${description}</p>
                     </div>
                   </div>
@@ -171,8 +168,8 @@ function getSavedArticles() {
 function getSavedArticleById() {
   var urlParams = new URLSearchParams(window.location.search);
   var idParam = urlParams.get("id");
-  
-  getById(idParam).then(function(article) {
+
+  getById(idParam).then(function (article) {
     articleHTML = '';
     var articleHTML = `
     <div class="card">
