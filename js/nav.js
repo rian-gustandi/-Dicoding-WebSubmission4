@@ -52,13 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
           getAreas();
         } else if (page === "competitions") {
           getCompetitions();
-        } else if (page === "matches") {
-          getMatches();
-        } else if (page === "teams") {
-          getTeams();
-        } else if (page === "saved") {
-          getSavedArticles();
-        }
+        } 
 
         if (this.status == 200) {
           content.innerHTML = xhttp.responseText;

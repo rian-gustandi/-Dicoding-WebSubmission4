@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "firstpwa-v1";
+const CACHE_NAME = "firstpwa-v3";
 var urlsToCache = [
   "/",
   "/nav.html",
@@ -8,8 +8,6 @@ var urlsToCache = [
   "/pages/home.html",
   "/pages/areas.html",
   "/pages/competitions.html",
-  "/pages/matches.html",
-  "/pages/teams.html",
   "/css/materialize.min.css",
   "/js/materialize.min.js",
   "/manifest.json",
