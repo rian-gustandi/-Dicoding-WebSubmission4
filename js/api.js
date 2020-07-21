@@ -23,6 +23,230 @@ function error(error) {
   console.log("Error : " + error);
 }
 
+// Blok kode Areas
+function getAreas() {
+  if ("caches" in window) {
+    caches.match(base_url + "areas").then(function (response) {
+      if (response) {
+        response.json().then(function (data) {
+          var articlesHTML = "";
+          data.areas.forEach(function (article) {
+            articlesHTML += `
+                  <div class="card">
+                    <a href="./football.html?id=${article.id}">
+                      <div class=" waves-effect waves-block waves-light">
+                        <span class="card-title truncate">${article.name}</span>
+                      </div>
+                    </a>
+                    <div class="card-content">
+                      <p>${article.lastUpdated}</p>
+                    </div>
+                  </div>
+                `;
+          });
+          // Sisipkan komponen card ke dalam elemen dengan id #content
+          document.getElementById("areas").innerHTML = articlesHTML;
+        });
+      }
+    });
+  }
+
+  fetch(base_url + "areas")
+    .then(status)
+    .then(json)
+    .then(function (data) {
+      // Objek/array JavaScript dari response.json() masuk lewat data.
+
+      // Menyusun komponen card artikel secara dinamis
+      var articlesHTML = "";
+      data.areas.forEach(function (article) {
+        articlesHTML += `
+              <div class="card">
+                <a href="./football.html?id=${article.id}">
+                  <div class=" waves-effect waves-block waves-light">
+                    <span class="card-title truncate">${article.name}</span>
+                  </div>
+                </a>
+                <div class="card-content">
+                  <p>${article.lastUpdated}</p>
+                </div>
+              </div>
+            `;
+      });
+      // Sisipkan komponen card ke dalam elemen dengan id #content
+      document.getElementById("areas").innerHTML = articlesHTML;
+    })
+    .catch(error);
+}
+
+// Blok kode Competitions
+function getCompetitions() {
+  if ("caches" in window) {
+    caches.match(base_url + "competitions").then(function (response) {
+      if (response) {
+        response.json().then(function (data) {
+          var articlesHTML = "";
+          data.competitions.forEach(function (article) {
+            articlesHTML += `
+                  <div class="card">
+                    <a href="./football.html?id=${article.id}">
+                      <div class=" waves-effect waves-block waves-light">
+                        <span class="card-title truncate">${article.name}</span>
+                      </div>
+                    </a>
+                    <div class="card-content">
+                      <p>${article.lastUpdated}</p>
+                    </div>
+                  </div>
+                `;
+          });
+          // Sisipkan komponen card ke dalam elemen dengan id #content
+          document.getElementById("competitions").innerHTML = articlesHTML;
+        });
+      }
+    });
+  }
+
+  fetch(base_url + "competitions")
+    .then(status)
+    .then(json)
+    .then(function (data) {
+      // Objek/array JavaScript dari response.json() masuk lewat data.
+
+      // Menyusun komponen card artikel secara dinamis
+      var articlesHTML = "";
+      data.competitions.forEach(function (article) {
+        articlesHTML += `
+              <div class="card">
+                <a href="./football.html?id=${article.id}">
+                  <div class=" waves-effect waves-block waves-light">
+                    <span class="card-title truncate">${article.name}</span>
+                  </div>
+                </a>
+                <div class="card-content">
+                  <p>${article.lastUpdated}</p>
+                </div>
+              </div>
+            `;
+      });
+      // Sisipkan komponen card ke dalam elemen dengan id #content
+      document.getElementById("competitions").innerHTML = articlesHTML;
+    })
+    .catch(error);
+}
+
+// Blok kode Teams
+function getTeams() {
+  if ("caches" in window) {
+    caches.match(base_url + "teams").then(function (response) {
+      if (response) {
+        response.json().then(function (data) {
+          var articlesHTML = "";
+          data.teams.forEach(function (article) {
+            articlesHTML += `
+                  <div class="card">
+                    <a href="./football.html?id=${article.id}">
+                      <div class=" waves-effect waves-block waves-light">
+                        <span class="card-title truncate">${article.name}</span>
+                      </div>
+                    </a>
+                    <div class="card-content">
+                      <p>${article.lastUpdated}</p>
+                    </div>
+                  </div>
+                `;
+          });
+          // Sisipkan komponen card ke dalam elemen dengan id #content
+          document.getElementById("teams").innerHTML = articlesHTML;
+        });
+      }
+    });
+  }
+
+  fetch(base_url + "teams")
+    .then(status)
+    .then(json)
+    .then(function (data) {
+      // Objek/array JavaScript dari response.json() masuk lewat data.
+
+      // Menyusun komponen card artikel secara dinamis
+      var articlesHTML = "";
+      data.teams.forEach(function (article) {
+        articlesHTML += `
+              <div class="card">
+                <a href="./football.html?id=${article.id}">
+                  <div class=" waves-effect waves-block waves-light">
+                    <span class="card-title truncate">${article.name}</span>
+                  </div>
+                </a>
+                <div class="card-content">
+                  <p>${article.lastUpdated}</p>
+                </div>
+              </div>
+            `;
+      });
+      // Sisipkan komponen card ke dalam elemen dengan id #content
+      document.getElementById("teams").innerHTML = articlesHTML;
+    })
+    .catch(error);
+}
+
+// Blok kode Matches
+function getMatches() {
+  if ("caches" in window) {
+    caches.match(base_url + "matches").then(function (response) {
+      if (response) {
+        response.json().then(function (data) {
+          var articlesHTML = "";
+          data.matches.forEach(function (article) {
+            articlesHTML += `
+                  <div class="card">
+                    <a href="./football.html?id=${article.id}">
+                      <div class=" waves-effect waves-block waves-light">
+                        <span class="card-title truncate">${article.name}</span>
+                      </div>
+                    </a>
+                    <div class="card-content">
+                      <p>${article.lastUpdated}</p>
+                    </div>
+                  </div>
+                `;
+          });
+          // Sisipkan komponen card ke dalam elemen dengan id #content
+          document.getElementById("matches").innerHTML = articlesHTML;
+        });
+      }
+    });
+  }
+
+  fetch(base_url + "matches")
+    .then(status)
+    .then(json)
+    .then(function (data) {
+      // Objek/array JavaScript dari response.json() masuk lewat data.
+
+      // Menyusun komponen card artikel secara dinamis
+      var articlesHTML = "";
+      data.matches.forEach(function (article) {
+        articlesHTML += `
+              <div class="card">
+                <a href="./football.html?id=${article.id}">
+                  <div class=" waves-effect waves-block waves-light">
+                    <span class="card-title truncate">${article.name}</span>
+                  </div>
+                </a>
+                <div class="card-content">
+                  <p>${article.lastUpdated}</p>
+                </div>
+              </div>
+            `;
+      });
+      // Sisipkan komponen card ke dalam elemen dengan id #content
+      document.getElementById("matches").innerHTML = articlesHTML;
+    })
+    .catch(error);
+}
+
 // Blok kode untuk melakukan request data json
 function getArticles() {
   if ("caches" in window) {

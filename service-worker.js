@@ -6,12 +6,16 @@ var urlsToCache = [
   "/index.html",
   "/football.html",
   "/pages/home.html",
+  "/pages/areas.html",
+  "/pages/competitions.html",
+  "/pages/matches.html",
+  "/pages/teams.html",
   "/css/materialize.min.css",
   "/js/materialize.min.js",
   "/manifest.json",
   "/js/nav.js",
   "/js/api.js",
-  "/icon.png"
+  "/football.png"
 ];
 
 self.addEventListener("install", function(event) {

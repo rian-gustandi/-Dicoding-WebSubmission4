@@ -48,6 +48,14 @@ document.addEventListener("DOMContentLoaded", function() {
         
         if (page === "home") {
           getArticles();
+        } else if (page === "areas") {
+          getAreas();
+        } else if (page === "competitions") {
+          getCompetitions();
+        } else if (page === "matches") {
+          getMatches();
+        } else if (page === "teams") {
+          getTeams();
         } else if (page === "saved") {
           getSavedArticles();
         }
