@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "firstpwa-v3";
+const CACHE_NAME = "firstpwa-v1";
 var urlsToCache = [
   "/",
   "/nav.html",
@@ -13,7 +13,11 @@ var urlsToCache = [
   "/manifest.json",
   "/js/nav.js",
   "/js/api.js",
-  "/football.png"
+  "/football.png",
+  "/push.html",
+  "/push.js",
+  "/note.txt",
+  "/pages/push.html",
 ];
 
 self.addEventListener("install", function(event) {
@@ -57,5 +61,26 @@ self.addEventListener("activate", function(event) {
         })
       );
     })
+  );
+});
+
+self.addEventListener('push', function (event) {
+  var body;
+  if (event.data) {
+    body = event.data.text();
+  } else {
+    body = 'Push message no payload';
+  }
+  var options = {
+    body: body,
+    icon: 'img/notification.png',
+    vibrate: [100, 50, 100],
+    data: {
+      dateOfArrival: Date.now(),
+      primaryKey: 1
+    }
+  };
+  event.waitUntil(
+    self.registration.showNotification('Push Notification', options)
   );
 });

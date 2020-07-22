@@ -39,7 +39,8 @@ function getAreas() {
                       </div>
                     </a>
                     <div class="card-content">
-                      <p>${article.lastUpdated}</p>
+                      <p>parentAreaId: ${article.parentAreaId}</p>
+                      <p>parentArea: ${article.parentArea}</p>
                     </div>
                   </div>
                 `;
@@ -68,7 +69,8 @@ function getAreas() {
                   </div>
                 </a>
                 <div class="card-content">
-                  <p>${article.lastUpdated}</p>
+                  <p>parentAreaId: ${article.parentAreaId}</p>
+                  <p>parentArea: ${article.parentArea}</p>
                 </div>
               </div>
             `;
@@ -95,7 +97,7 @@ function getCompetitions() {
                       </div>
                     </a>
                     <div class="card-content">
-                      <p>${article.lastUpdated}</p>
+                      <p>lastUpdated: ${article.lastUpdated}</p>
                     </div>
                   </div>
                 `;
@@ -124,7 +126,7 @@ function getCompetitions() {
                   </div>
                 </a>
                 <div class="card-content">
-                  <p>${article.lastUpdated}</p>
+                  <p>lastUpdated: ${article.lastUpdated}</p>
                 </div>
               </div>
             `;
