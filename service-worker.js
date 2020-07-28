@@ -1,23 +1,28 @@
 
-const CACHE_NAME = "firstpwa-v1";
+const CACHE_NAME = "firstpwa-v2";
 var urlsToCache = [
   "/",
-  "/nav.html",
-  "/index.html",
   "/football.html",
+  "/football.png",
+  "/index.html",
+  "/manifest.json",
+  "/nav.html",
+  "/note.txt",
+  "/push.js",
+
   "/pages/home.html",
   "/pages/areas.html",
   "/pages/competitions.html",
-  "/css/materialize.min.css",
-  "/js/materialize.min.js",
-  "/manifest.json",
-  "/js/nav.js",
-  "/js/api.js",
-  "/football.png",
-  "/push.html",
-  "/push.js",
-  "/note.txt",
   "/pages/push.html",
+
+  "/css/materialize.min.css",
+
+  "/js/api.js",
+  "/js/db.js",
+  "/js/idb.js",
+  "/js/materialize.min.js",
+  "/js/nav.js",
+  "/js/script.js",
 ];
 
 self.addEventListener("install", function(event) {
@@ -73,7 +78,7 @@ self.addEventListener('push', function (event) {
   }
   var options = {
     body: body,
-    icon: 'img/notification.png',
+    icon: 'football.png',
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),
