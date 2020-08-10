@@ -36,12 +36,18 @@
     <!-- Akhir Navigasi -->
 
     <div class='container'>
+        <h2>Add Areas</h2>
         <div class="row">
             <form>
-                <label for="bookId">Id Buku: </label><input id="bookId" type="number" required>
-                <label for="bookName">Nama Buku: </label> <input id="bookName" type="text" required>
-                <label for="bookYear">Tahun: </label><input id="bookYear" type="number" required>
-                <label for="bookAuthor">Penulis: </label><input id="bookAuthor" type="text" required>
+                <label for="bookId">Id Competitions: </label>
+                <input id="bookId" type="number" required>
+
+                <label for="bookName">name: </label>
+                <input id="bookName" type="text" required placeholder="Example: John">
+
+                <label for="bookAuthor">lastUpdated: </label>
+                <input id="bookAuthor" type="text" required placeholder="Example: 01-01-2001">
+
                 <button onclick="insertBook()" class="btn waves-effect waves-light" type="submit" name="action">Save
                 </button>
             </form>
@@ -49,9 +55,8 @@
                 <thead>
                     <tr>
                         <th>Id Buku</th>
-                        <th>Nama Buku</th>
-                        <th>Tahun</th>
-                        <th>Penulis</th>
+                        <th>name</th>
+                        <th>lastUpdated</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -60,9 +65,9 @@
         </div>
     </div>c
 
-<div class="fixed-action-btn">
-    <a href='./index.html' class="btn-floating btn-large blue" id="save"> Home</a>
-</div>
+    <div class="fixed-action-btn">
+        <a href='./index.html' class="btn-floating btn-large blue" id="save"> Home</a>
+    </div>
 
     <script src="js/materialize.min.js"></script>
     <script src="js/idb.js"></script>
@@ -74,14 +79,12 @@
         const booksRow = document.querySelector("#booksRow");
         const inputBookId = document.querySelector("#bookId");
         const inputBookName = document.querySelector("#bookName");
-        const inputBookYear = document.querySelector("#bookYear");
         const inputBookAuthor = document.querySelector("#bookAuthor");
 
         function insertBook() {
             const book = {
                 bookId: inputBookId.value,
                 bookName: inputBookName.value,
-                bookYear: inputBookYear.value,
                 bookAuthor: inputBookAuthor.value
             };
 
@@ -98,7 +101,6 @@
                <tr>
                  <td>${book.bookId}</td>
                  <td>${book.bookName}</td>
-                 <td>${book.bookYear}</td>
                  <td>${book.bookAuthor}</td>
                  <td><button id="${book.bookId}" class="removeButton btn red">Remove</button></td>
                </tr>

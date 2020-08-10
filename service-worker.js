@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "firstpwa-v1";
+const CACHE_NAME = "firstpwa-v3";
 var urlsToCache = [
   "/",
   "/football.html",
