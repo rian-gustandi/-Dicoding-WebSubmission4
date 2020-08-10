@@ -39,14 +39,17 @@
         <h2>Add Areas</h2>
         <div class="row">
             <form>
-                <label for="bookId">Id Competitions: </label>
-                <input id="bookId" type="number" required>
+                <label for="bookId">Id Areas: </label>
+                <input id="bookId" type="number" required placeholder="Example: 2000">
 
                 <label for="bookName">name: </label>
-                <input id="bookName" type="text" required placeholder="Example: John">
+                <input id="bookName" type="text" required placeholder="Example: Afghanistan">
 
-                <label for="bookAuthor">lastUpdated: </label>
-                <input id="bookAuthor" type="text" required placeholder="Example: 01-01-2001">
+                <label for="bookAuthor">parentAreaId: </label>
+                <input id="bookAuthor" type="number" required placeholder="Example: 2014">
+
+                <label for="bookName">parentArea: </label>
+                <input id="bookArea" type="text" required placeholder="Example: Asia">
 
                 <button onclick="insertBook()" class="btn waves-effect waves-light" type="submit" name="action">Save
                 </button>
@@ -56,7 +59,8 @@
                     <tr>
                         <th>Id Buku</th>
                         <th>name</th>
-                        <th>lastUpdated</th>
+                        <th>parentAreaId</th>
+                        <th>parentArea</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -80,12 +84,15 @@
         const inputBookId = document.querySelector("#bookId");
         const inputBookName = document.querySelector("#bookName");
         const inputBookAuthor = document.querySelector("#bookAuthor");
+        const inputBookArea = document.querySelector("#bookArea");
+
 
         function insertBook() {
             const book = {
                 bookId: inputBookId.value,
                 bookName: inputBookName.value,
-                bookAuthor: inputBookAuthor.value
+                bookAuthor: inputBookAuthor.value,
+                bookArea: inputBookArea.value
             };
 
             dbInsertBook(book).then(() => {
@@ -102,6 +109,7 @@
                  <td>${book.bookId}</td>
                  <td>${book.bookName}</td>
                  <td>${book.bookAuthor}</td>
+                 <td>${book.bookArea}</td>
                  <td><button id="${book.bookId}" class="removeButton btn red">Remove</button></td>
                </tr>
                `;
