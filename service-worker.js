@@ -1,6 +1,6 @@
 
-const CACHE_NAME = "firstpwa-v3";
-var urlsToCache = [
+const CACHE_NAME = "firstpwa-v2";
+const urlsToCache = [
   "/",
   "/football.html",
   "/football.png",
@@ -34,7 +34,7 @@ self.addEventListener("install", function(event) {
 });
 
 self.addEventListener("fetch", function(event) {
-  var base_url = "https://cors-anywhere.herokuapp.com/http://api.football-data.org/v2/";
+  let base_url = "https://cors-anywhere.herokuapp.com/http://api.football-data.org/v2/";
 
   if (event.request.url.indexOf(base_url) > -1) {
     event.respondWith(
@@ -70,13 +70,13 @@ self.addEventListener("activate", function(event) {
 });
 
 self.addEventListener('push', function (event) {
-  var body;
+  let body;
   if (event.data) {
     body = event.data.text();
   } else {
     body = 'Push message no payload';
   }
-  var options = {
+  let options = {
     body: body,
     icon: 'football.png',
     vibrate: [100, 50, 100],

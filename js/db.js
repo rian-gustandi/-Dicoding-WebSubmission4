@@ -10,8 +10,8 @@ var dbPromised = idb.open("news-reader", 1, function(upgradeDb) {
 function saveForLater(article) {
   dbPromised
     .then(function(db) {
-      var tx = db.transaction("articles", "readwrite");
-      var store = tx.objectStore("articles");
+      let tx = db.transaction("articles", "readwrite");
+      let store = tx.objectStore("articles");
       console.log(article);
       store.add(article.competitions);
       return tx.complete;
@@ -25,8 +25,8 @@ function getAll() {
   return new Promise(function(resolve, reject) {
     dbPromised
       .then(function(db) {
-        var tx = db.transaction("articles", "readonly");
-        var store = tx.objectStore("articles");
+        let tx = db.transaction("articles", "readonly");
+        let store = tx.objectStore("articles");
         return store.getAll();
       })
       .then(function(articles) {

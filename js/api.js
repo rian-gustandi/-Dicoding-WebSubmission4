@@ -1,4 +1,4 @@
-var base_url = "https://cors-anywhere.herokuapp.com/http://api.football-data.org/v2/";
+let base_url = "https://cors-anywhere.herokuapp.com/http://api.football-data.org/v2/";
 
 // Blok kode yang akan di panggil jika fetch berhasil
 function status(response) {
@@ -29,7 +29,7 @@ function getAreas() {
     caches.match(base_url + "areas").then(function (response) {
       if (response) {
         response.json().then(function (data) {
-          var articlesHTML = "";
+          let articlesHTML = "";
           data.areas.forEach(function (article) {
             articlesHTML += `
                   <div class="card">
@@ -59,7 +59,7 @@ function getAreas() {
       // Objek/array JavaScript dari response.json() masuk lewat data.
 
       // Menyusun komponen card artikel secara dinamis
-      var articlesHTML = "";
+      let articlesHTML = "";
       data.areas.forEach(function (article) {
         articlesHTML += `
               <div class="card">
@@ -87,7 +87,7 @@ function getCompetitions() {
     caches.match(base_url + "competitions").then(function (response) {
       if (response) {
         response.json().then(function (data) {
-          var articlesHTML = "";
+          let articlesHTML = "";
           data.competitions.forEach(function (article) {
             articlesHTML += `
                   <div class="card">
@@ -116,7 +116,7 @@ function getCompetitions() {
       // Objek/array JavaScript dari response.json() masuk lewat data.
 
       // Menyusun komponen card artikel secara dinamis
-      var articlesHTML = "";
+      let articlesHTML = "";
       data.competitions.forEach(function (article) {
         articlesHTML += `
               <div class="card">
@@ -143,7 +143,7 @@ function getArticles() {
     caches.match(base_url + "competitions").then(function (response) {
       if (response) {
         response.json().then(function (data) {
-          var articlesHTML = "";
+          let articlesHTML = "";
           data.competitions.forEach(function (article) {
             articlesHTML += `
                   <div class="card">
@@ -172,7 +172,7 @@ function getArticles() {
       // Objek/array JavaScript dari response.json() masuk lewat data.
 
       // Menyusun komponen card artikel secara dinamis
-      var articlesHTML = "";
+      let articlesHTML = "";
       data.competitions.forEach(function (article) {
         articlesHTML += `
               <div class="card">
@@ -196,14 +196,14 @@ function getArticles() {
 function getArticleById() {
   return new Promise(function (resolve, reject) {
     // Ambil nilai query parameter (?id=)
-    var urlParams = new URLSearchParams(window.location.search);
-    var idParam = urlParams.get("id");
+    let urlParams = new URLSearchParams(window.location.search);
+    let idParam = urlParams.get("id");
 
     if ("caches" in window) {
       caches.match(base_url + "football/" + idParam).then(function (response) {
         if (response) {
           response.json().then(function (data) {
-            var articleHTML = `
+            let articleHTML = `
             <div class="card">
               <div class="card-image waves-effect waves-block waves-light">
                 <img src="${data.result.cover}" />
@@ -231,7 +231,7 @@ function getArticleById() {
         // Objek JavaScript dari response.json() masuk lewat variabel data.
         // console.log(data);
         // Menyusun komponen card artikel secara dinamis
-        var articleHTML = `
+        let articleHTML = `
           <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
               <img src="${data.result.cover}" />
