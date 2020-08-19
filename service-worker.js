@@ -1,21 +1,25 @@
 
-const CACHE_NAME = "firstpwa-v2";
+const CACHE_NAME = "firstpwa-v1";
 const urlsToCache = [
   "/",
+  "/crud-areas.html",
+  "/crud-competitions.html",
   "/football.html",
-  "/football.png",
   "/index.html",
-  "/manifest.json",
   "/nav.html",
-  "/note.txt",
-  "/push.js",
-
   "/pages/home.html",
   "/pages/areas.html",
   "/pages/competitions.html",
   "/pages/push.html",
 
+  "/img/football.png",
+
+  "/manifest.json",
+  "/note.txt",
+  "/push.js",
+
   "/css/materialize.min.css",
+  "/css/materialize.css",
 
   "/js/api.js",
   "/js/db.js",
